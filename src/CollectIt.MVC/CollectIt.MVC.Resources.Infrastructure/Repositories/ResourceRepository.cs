@@ -23,7 +23,8 @@ public class ResourceRepository : IResourceRepository
 
     public async Task<Resource> FindByIdAsync(int id)
     {
-        return await context.Resources.Where(resource => resource.ResourceId == id).FirstOrDefaultAsync();
+        return await context.Resources
+            .Where(resource => resource.ResourceId == id).FirstOrDefaultAsync() ?? throw new InvalidOperationException();
     }
 
     public Task UpdateAsync(Resource item)
