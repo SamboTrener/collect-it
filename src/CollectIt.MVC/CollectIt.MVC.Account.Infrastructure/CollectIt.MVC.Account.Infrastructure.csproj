@@ -14,6 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CollectIt.MVC.Account.Abstractions\CollectIt.MVC.Account.Abstractions.csproj" />
+      <ProjectReference Include="..\CollectIt.MVC.Resources.Entities\CollectIt.MVC.Resources.Entities.csproj" />
     </ItemGroup>
 
 </Project>

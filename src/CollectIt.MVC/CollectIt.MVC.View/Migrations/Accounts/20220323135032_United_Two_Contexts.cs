@@ -4,13 +4,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CollectIt.MVC.View.Migrations.Resources
+namespace CollectIt.MVC.View.Migrations.Accounts
 {
-    public partial class AddSources : Migration
+    public partial class United_Two_Contexts : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
             migrationBuilder.CreateTable(
                 name: "Resources",
                 columns: table => new
@@ -25,7 +24,7 @@ namespace CollectIt.MVC.View.Migrations.Resources
                 {
                     table.PrimaryKey("PK_Resources", x => x.ResourceId);
                     table.ForeignKey(
-                        name: "FK_Resources_User_ResourceOwnerId",
+                        name: "FK_Resources_AspNetUsers_ResourceOwnerId",
                         column: x => x.ResourceOwnerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -47,16 +46,16 @@ namespace CollectIt.MVC.View.Migrations.Resources
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
                     table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Comments_Resources_TargetResourceId",
                         column: x => x.TargetResourceId,
                         principalTable: "Resources",
                         principalColumn: "ResourceId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comments_User_OwnerId",
-                        column: x => x.OwnerId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -119,6 +118,16 @@ namespace CollectIt.MVC.View.Migrations.Resources
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { 1, "DEFAULT_STAMP", "Admin", "ADMIN" },
+                    { 2, "DEFAULT_STAMP", "User", "USER" },
+                    { 3, "DEFAULT_STAMP", "Technical Support", "TECHNICAL SUPPORT" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_OwnerId",
                 table: "Comments",
@@ -143,7 +152,7 @@ namespace CollectIt.MVC.View.Migrations.Resources
                 name: "IX_Resources_ResourceOwnerId",
                 table: "Resources",
                 column: "ResourceOwnerId");
-            
+
             migrationBuilder.CreateIndex(
                 name: "IX_Videos_ResourceId",
                 table: "Videos",
@@ -166,6 +175,21 @@ namespace CollectIt.MVC.View.Migrations.Resources
 
             migrationBuilder.DropTable(
                 name: "Resources");
+
+            migrationBuilder.DeleteData(
+                table: "AspNetRoles",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "AspNetRoles",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "AspNetRoles",
+                keyColumn: "Id",
+                keyValue: 3);
         }
     }
 }

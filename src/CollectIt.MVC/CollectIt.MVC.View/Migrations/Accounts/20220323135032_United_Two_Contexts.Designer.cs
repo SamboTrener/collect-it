@@ -3,18 +3,20 @@ using System;
 using CollectIt.MVC.Account.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using NpgsqlTypes;
 
 #nullable disable
 
-namespace CollectIt.MVC.View.Migrations
+namespace CollectIt.MVC.View.Migrations.Accounts
 {
     [DbContext(typeof(PostgresqlIdentityDbContext))]
-    partial class PostgresqlIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220323135032_United_Two_Contexts")]
+    partial class United_Two_Contexts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

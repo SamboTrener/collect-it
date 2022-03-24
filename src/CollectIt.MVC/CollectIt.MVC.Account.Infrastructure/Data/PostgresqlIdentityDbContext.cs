@@ -1,4 +1,5 @@
 ﻿using CollectIt.MVC.Account.IdentityEntities;
+using CollectIt.MVC.Resources.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,12 @@ public class PostgresqlIdentityDbContext : IdentityDbContext<User, Role, int>
     public DbSet<Subscription> Subscriptions { get; set; }
     public DbSet<UserSubscription> UsersSubscriptions { get; set; }
     public DbSet<ActiveUserSubscription> ActiveUsersSubscriptions { get; set; }
+    
+    public DbSet<Comment> Comments { get; set; }
+    public DbSet<Image> Images { get; set; }
+    public DbSet<Music> Musics { get; set; }
+    public DbSet<Video> Videos { get; set; }
+    public DbSet<Resource> Resources { get; set; }
     public PostgresqlIdentityDbContext(DbContextOptions<PostgresqlIdentityDbContext> options)
         : base(options)
     { }

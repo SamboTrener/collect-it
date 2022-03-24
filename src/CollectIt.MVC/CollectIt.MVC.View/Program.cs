@@ -54,16 +54,6 @@ builder.Services.AddIdentity<User, Role>(config =>
        .AddUserManager<UserManager>()
        .AddDefaultTokenProviders();
 
-
-builder.Services.AddDbContext<PostgresqlResourcesDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration["ConnectionStrings:Resources:PostgresqlDevelopment"],
-        config =>
-        {
-            config.MigrationsAssembly("CollectIt.MVC.View");
-        });
-});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

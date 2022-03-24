@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CollectIt.MVC.Account.Infrastructure\CollectIt.MVC.Account.Infrastructure.csproj" />
       <ProjectReference Include="..\CollectIt.MVC.Resources.Abstractions\CollectIt.MVC.Resources.Abstractions.csproj" />
     </ItemGroup>
 

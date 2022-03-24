@@ -1,4 +1,5 @@
-﻿using CollectIt.MVC.Resources.Infrastructure;
+﻿using CollectIt.MVC.Account.Infrastructure.Data;
+using CollectIt.MVC.Resources.Infrastructure;
 using CollectIt.MVC.Resources.Infrastructure.Repositories;
 using CollectIt.MVC.View.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ public class ResourceController : Controller
     private ImageRepository imageRepository;
     private ResourceRepository resourceRepository;
     
-    public ResourceController(PostgresqlResourcesDbContext context)
+    public ResourceController(PostgresqlIdentityDbContext context)
     {
         imageRepository = new ImageRepository(context);
         resourceRepository = new ResourceRepository(context);

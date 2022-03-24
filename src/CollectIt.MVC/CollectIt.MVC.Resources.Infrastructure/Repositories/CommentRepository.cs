@@ -1,4 +1,5 @@
-﻿using CollectIt.MVC.Resources.Abstractions;
+﻿using CollectIt.MVC.Account.Infrastructure.Data;
+using CollectIt.MVC.Resources.Abstractions;
 using CollectIt.MVC.Resources.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,9 +7,9 @@ namespace CollectIt.MVC.Resources.Infrastructure.Repositories;
 
 public class CommentRepository : ICommentRepository
 {
-    private readonly PostgresqlResourcesDbContext context;
+    private readonly PostgresqlIdentityDbContext context;
 
-    public CommentRepository(PostgresqlResourcesDbContext context)
+    public CommentRepository(PostgresqlIdentityDbContext context)
     {
         this.context = context;
     }
